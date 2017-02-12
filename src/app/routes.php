@@ -1,0 +1,8 @@
+<?php 
+
+use Symfony\Component\Routing\RouteCollection;
+use Symfony\Component\Routing\Annotation\Route;
+
+$routes = new RouteCollection();
+
+$routes->add('home', new Route('/home/{page}', array('page' => 1)));

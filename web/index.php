@@ -15,17 +15,17 @@
 
   $response = new Response();
 
-  $dir  = __DIR__ . '/../src/app/controllers/';
+  $dir  = __DIR__ . '/../src/app/controllers/%s.php';
   
   $map = array(
     '/home' => 'home',
-    '/list' => 'list',
+    '/list' => 'list'
   );
 
-  if (file_exists($dir . $controller . '.php')) {
+  if (isset($map[$path])) {
     ob_start();
-    require $dir . $controller . '.php';
-    $respone->setContent(ob_get_clean());
+    require sprintf($dir, $map[$path]);
+    $response->setContent(ob_get_clean());
   } else {
     $response->setStatusCode(404);
     $response->setContent('Nie ma takiej strony.');
